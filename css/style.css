@@ -1,0 +1,397 @@
+/* ============================================
+   LOCH11 CREATIVE SERVICES — Main Stylesheet
+   Brand Colors:
+     Chartreuse:  #CCD72A
+     Navy:        #0B1628
+     Black:       #000000
+     White:       #FFFFFF
+   Brand Fonts:
+     Display:     Degular Display (Adobe Fonts) — requires Adobe Fonts kit link in HTML
+     Body:        Myriad Pro → fallback: 'Gill Sans', Calibri, sans-serif
+   ============================================ */
+
+/* ---------- CSS Variables ---------- */
+:root {
+  --chartreuse: #CCD72A;
+  --navy: #0B1628;
+  --black: #000000;
+  --white: #FFFFFF;
+  --gray-mid: #4a4a4a;
+  --gray-light: #f0f0eb;
+
+  --font-display: "degular-display", 'Futura', 'Century Gothic', sans-serif;
+  --font-heading: 'Futura', 'Century Gothic', 'Trebuchet MS', sans-serif;
+  --font-body: 'Gill Sans', 'Gill Sans MT', Calibri, 'Myriad Pro', sans-serif;
+
+  --transition: 0.3s ease;
+  --border-radius: 4px;
+  --max-width: 1200px;
+}
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--navy);
+  color: var(--white);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--chartreuse);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a:hover {
+  color: var(--white);
+}
+
+/* ---------- Typography ---------- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-style: normal;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+h1 { font-size: clamp(2.8rem, 8vw, 7rem); }
+h2 { font-size: clamp(2rem, 5vw, 4rem); }
+h3 { font-size: clamp(1.4rem, 3vw, 2rem); }
+h4 { font-size: 1.2rem; }
+
+
+p {
+  font-size: 1.05rem;
+  max-width: 65ch;
+  line-height: 1.75;
+}
+
+/* ---------- Layout Helpers ---------- */
+.container {
+  width: 90%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+section {
+  padding: 6rem 0;
+}
+
+.section-label {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--chartreuse);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+/* ---------- Navigation ---------- */
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1.25rem 0;
+  transition: background var(--transition), padding var(--transition);
+}
+
+.site-nav.scrolled {
+  background: rgba(11, 22, 40, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(204, 215, 42, 0.15);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.nav-logo img {
+  height: 48px;
+  width: auto;
+}
+
+/* Logo placeholder text fallback */
+.nav-logo-text {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--chartreuse);
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--white);
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--chartreuse);
+  transition: width var(--transition);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--chartreuse);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+/* Hamburger */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background: var(--white);
+  transition: all var(--transition);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.9rem 2.2rem;
+  border: 2px solid var(--chartreuse);
+  color: var(--chartreuse);
+  cursor: pointer;
+  transition: all var(--transition);
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--chartreuse);
+  transform: translateX(-105%);
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+
+.btn:hover {
+  color: var(--navy);
+}
+
+.btn:hover::before {
+  transform: translateX(0);
+}
+
+.btn-filled {
+  background: var(--chartreuse);
+  color: var(--navy);
+}
+
+.btn-filled::before {
+  background: var(--white);
+}
+
+.btn-filled:hover {
+  color: var(--navy);
+}
+
+/* ---------- Image Placeholders ---------- */
+.img-placeholder {
+  background: rgba(204, 215, 42, 0.08);
+  border: 2px dashed rgba(204, 215, 42, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: rgba(204, 215, 42, 0.5);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: border-color var(--transition);
+}
+
+.img-placeholder:hover {
+  border-color: rgba(204, 215, 42, 0.6);
+}
+
+.img-placeholder svg {
+  opacity: 0.4;
+}
+
+/* ---------- Brand Pattern Background ---------- */
+.pattern-bg {
+  background-color: var(--navy);
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(204,215,42,0.06) 1px, transparent 0);
+  background-size: 32px 32px;
+}
+
+/* ---------- Decorative Divider ---------- */
+.divider {
+  width: 60px;
+  height: 4px;
+  background: var(--chartreuse);
+  margin: 1.5rem 0;
+}
+
+.divider-center {
+  margin: 1.5rem auto;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--black);
+  padding: 3rem 0;
+  border-top: 2px solid var(--chartreuse);
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footer-copy {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  font-family: var(--font-display);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.footer-links a {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+}
+
+.footer-links a:hover {
+  color: var(--chartreuse);
+}
+
+/* ---------- AOS Custom Overrides ---------- */
+[data-aos] {
+  pointer-events: none;
+}
+[data-aos].aos-animate {
+  pointer-events: auto;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--navy);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    z-index: 999;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a {
+    font-size: 1.5rem;
+    letter-spacing: 0.15em;
+  }
+
+  .nav-toggle {
+    display: flex;
+    z-index: 1000;
+  }
+
+  .nav-toggle.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .nav-toggle.open span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-toggle.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  section {
+    padding: 4rem 0;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
