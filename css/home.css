@@ -66,6 +66,7 @@
 
 /* Underline accent on hero word */
 .hero-headline-accent::after {
+  display: none; /* Hide the underline for now, can enable if needed */
   content: '';
   position: absolute;
   bottom: 4px;
