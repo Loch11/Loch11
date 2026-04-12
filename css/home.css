@@ -29,6 +29,7 @@
 
 /* Glow effect behind hero content */
 .hero::before {
+  display: none; /* Hide the glow for now, can enable if needed */
   content: '';
   position: absolute;
   top: 20%;
