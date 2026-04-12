@@ -40,6 +40,7 @@
 
 /* Large decorative number behind header */
 .about-hero::before {
+  display: none; /* Hide the large number for now, can enable if needed */
   content: '11';
   position: absolute;
   right: 5%;
