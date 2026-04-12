@@ -3,6 +3,14 @@
    ============================================ */
 
 /* ---------- Page Header ---------- */
+body {
+  background-color: #1C0F28;
+}
+
+.site-nav.scrolled {
+  background: rgba(28, 15, 40, 0.95);
+}
+
 .page-header {
   padding-top: 10rem;
   padding-bottom: 0;

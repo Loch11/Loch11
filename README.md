@@ -69,6 +69,6 @@ Uncomment the `<img>` tag below it and update the `src` path.
 | Name        | Hex       |
 |-------------|-----------|
 | Chartreuse  | `#CCD72A` |
-| Navy        | `#1c0f28` |
+| Navy        | `#0B1628` |
 | Black       | `#000000` |
 | White       | `#FFFFFF` |
