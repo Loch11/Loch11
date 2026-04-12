@@ -2,7 +2,7 @@
    LOCH11 CREATIVE SERVICES — Main Stylesheet
    Brand Colors:
      Chartreuse:  #CCD72A
-     Navy:        #0B1628
+     Navy:        #1c0f28
      Black:       #000000
      White:       #FFFFFF
    Brand Fonts:
@@ -13,7 +13,7 @@
 /* ---------- CSS Variables ---------- */
 :root {
   --chartreuse: #CCD72A;
-  --navy: #0B1628;
+  --navy: #1c0f28;
   --black: #000000;
   --white: #FFFFFF;
   --gray-mid: #4a4a4a;
