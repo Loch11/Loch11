@@ -44,3 +44,45 @@
     if (matchBtn) matchBtn.click();
   }
 })();
+
+// ---------- Lightbox ----------
+(function () {
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+  const lightboxClose = document.getElementById('lightbox-close');
+  const lightboxBackdrop = document.getElementById('lightbox-backdrop');
+
+  // Add click listener to every gallery image
+  document.querySelectorAll('.logo-item img, .type-item img, .character-item img, .illustration-item img').forEach(function (img) {
+    img.addEventListener('click', function () {
+      lightboxImg.src = this.src;
+      lightboxImg.alt = this.alt;
+
+      // Grab the caption from the h4 sibling
+      const label = this.closest('.logo-item, .type-item, .character-item, .illustration-item')
+        .querySelector('h4');
+      lightboxCaption.textContent = label ? label.textContent : '';
+
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  // Close on X button
+  lightboxClose.addEventListener('click', closeLightbox);
+
+  // Close on backdrop click
+  lightboxBackdrop.addEventListener('click', closeLightbox);
+
+  // Close on Escape key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+    lightboxImg.src = '';
+  }
+})();
