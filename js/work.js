@@ -46,7 +46,7 @@
 })();
 
 // ---------- Lightbox ----------
-(function () {
+document.addEventListener('DOMContentLoaded', function () {
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxCaption = document.getElementById('lightbox-caption');
@@ -85,4 +85,4 @@
     document.body.style.overflow = '';
     lightboxImg.src = '';
   }
-})();
+});
