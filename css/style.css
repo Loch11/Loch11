@@ -1,35 +1,20 @@
-/* ============================================
-   LOCH11 CREATIVE SERVICES — Main Stylesheet
-   Brand Colors:
-     Chartreuse:  #CCD72A
-     Navy:        #0B1628
-     Black:       #000000
-     White:       #FFFFFF
-   Brand Fonts:
-     Display:     Degular Display (Adobe Fonts) — requires Adobe Fonts kit link in HTML
-     Body:        Myriad Pro → fallback: 'Gill Sans', Calibri, sans-serif
-   ============================================ */
-
-/* ---------- CSS Variables ---------- */
+/* =========================================
+   1. BRAND VARIABLES & RESET
+   ========================================= */
 :root {
-  --chartreuse: #CCD72A;
-  --navy: #0B1628;
-  --black: #000000;
-  --white: #FFFFFF;
-  --gray-mid: #4a4a4a;
-  --gray-light: #f0f0eb;
-
-  --font-display: "poplar-std", 'Futura', 'Century Gothic', sans-serif;
-  --font-heading: 'Futura', 'Century Gothic', 'Trebuchet MS', sans-serif;
-  --font-body: 'Gill Sans', 'Gill Sans MT', Calibri, 'Myriad Pro', sans-serif;
-
-  --transition: 0.3s ease;
-  --border-radius: 4px;
-  --max-width: 1200px;
+  --bg-black: #000000;
+  --bg-surface: #0a0d0c;
+  --text-offwhite: #fffff7;
+  --text-muted: #a3a39e;
+  --accent-teal: #00e5cc;
+  --accent-teal-hover: #00cbb5;
+  
+  --font-display: 'Montserrat', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --container-width: 1280px;
 }
 
-/* ---------- Reset & Base ---------- */
-*, *::before, *::after {
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -40,357 +25,501 @@ html {
 }
 
 body {
+  background-color: var(--bg-black);
+  color: var(--text-offwhite);
   font-family: var(--font-body);
-  background-color: var(--navy);
-  color: var(--white);
   line-height: 1.6;
   overflow-x: hidden;
 }
 
-img {
-  max-width: 100%;
-  display: block;
+/* =========================================
+   2. ABOVE THE FOLD LAYOUT
+   ========================================= */
+/* Full-Viewport Above the Fold Container */
+.above-the-fold {
+  position: relative;
+  min-height: 100vh;  /* Fallback for older browsers */
+  min-height: 100svh; /* Accounts for mobile browser address bars */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically centers your hero copy in the viewport */
+  background-color: var(--bg-black, #000000);
+  overflow: visible;
 }
 
-a {
-  color: var(--chartreuse);
-  text-decoration: none;
-  transition: color var(--transition);
-}
-
-a:hover {
-  color: var(--white);
-}
-
-/* ---------- Typography ---------- */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-style: normal;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
-}
-
-h1 { font-size: clamp(2.8rem, 8vw, 7rem); }
-h2 { font-size: clamp(2rem, 5vw, 4rem); }
-h3 { font-size: clamp(1.4rem, 3vw, 2rem); }
-h4 { font-size: 1.2rem; }
-
-
-p {
-  font-size: 1.05rem;
-  max-width: 65ch;
-  line-height: 1.75;
-}
-
-/* ---------- Layout Helpers ---------- */
-.container {
-  width: 90%;
-  max-width: var(--max-width);
-  margin: 0 auto;
-}
-
-section {
-  padding: 6rem 0;
-}
-
-.section-label {
-  font-family: var(--font-heading);
-  font-weight: 800;
-  font-size: 0.75rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--chartreuse);
-  margin-bottom: 1rem;
-  display: block;
-}
-
-/* ---------- Navigation ---------- */
-.site-nav {
+/* =========================================
+   3. NAVIGATION BAR
+   ========================================= */
+/* Fixed Frosted Glass Navbar */
+.nav {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  z-index: 1000;
-  padding: 1.25rem 0;
-  transition: background var(--transition), padding var(--transition);
-}
+  width: 100%;
+  z-index: 100;
 
-.site-nav.scrolled {
-  background: rgba(11, 22, 40, 0.95);
+  /* Frosted glass base */
+  background-color: rgba(0, 0, 0, 0.55);
+
+  /* Fallback for Safari / Firefox */
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  padding: 0.75rem 0;
-  border-bottom: 1px solid rgba(204, 215, 42, 0.15);
+
+  /* Frosted blur + live water ripple for Chromium browsers */
+  backdrop-filter: blur(10px) url(#water-ripple);
+
+  /* Glass edge highlight */
+  border-bottom: 1px solid rgba(255, 255, 247, 0.15);
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 247, 0.08);
 }
 
-.nav-inner {
+/* Flexbox container that pushes logo left and links right */
+.nav-container {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  width: 90%;
-  max-width: var(--max-width);
+  align-items: center;
+  max-width: 1200px;
   margin: 0 auto;
+  padding: 1.25rem 2rem;
 }
 
-.nav-logo img {
-  height: 150px;
-  width: auto;
-}
-
-/* Logo placeholder text fallback */
-.nav-logo-text {
+.brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  color: var(--text-offwhite);
   font-family: var(--font-display);
-  font-size: 1.5rem;
   font-weight: 900;
-  color: var(--chartreuse);
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
+  font-size: 1.35rem;
+  letter-spacing: 0.04em;
+  transition: opacity 0.2s ease;
 }
 
+.brand-link:hover {
+  opacity: 0.85;
+}
+
+.brand-icon {
+  width: 100px;
+  height: 100px;
+  display: block;
+  filter: drop-shadow(0 0 6px rgba(0, 229, 204, 0.4));
+}
+
+/* Nav links list on the right */
 .nav-links {
   display: flex;
-  gap: 2.5rem;
+  gap: 2rem;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-links a {
-  font-family: var(--font-display);
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--white);
-  position: relative;
-  padding-bottom: 4px;
+  font-family: var(--font-display, 'Montserrat', sans-serif);
+  font-weight: 600; /* Adjust weight as needed (e.g., 500, 600, or 700) */
+  font-size: 1.25rem;
+  letter-spacing: 0.05em; /* Optional: adds a nice modern tracking */
+  color: var(--text-off-white, #fffff7);
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--chartreuse);
-  transition: width var(--transition);
+.nav-links a:hover {
+  color: var(--accent-teal, #00e5cc);
 }
 
-.nav-links a:hover,
-.nav-links a.active {
-  color: var(--chartreuse);
-}
-
-.nav-links a:hover::after,
-.nav-links a.active::after {
+/* =========================================
+   4. HERO & BIOLUMINESCENT TYPOGRAPHY
+   ========================================= */
+/* Adjust Hero Padding so it sits balanced inside the 100vh frame */
+.hero {
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  /* Keeps clearance below the fixed nav while leaving room for the serpent at the bottom */
+  padding: 120px 2rem 140px 2rem; 
 }
 
-/* Hamburger */
-.nav-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 4px;
-}
-
-.nav-toggle span {
-  display: block;
-  width: 26px;
-  height: 2px;
-  background: var(--white);
-  transition: all var(--transition);
-}
-
-/* ---------- Buttons ---------- */
-.btn {
-  display: inline-block;
-  font-family: var(--font-display);
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 0.9rem 2.2rem;
-  border: 2px solid var(--chartreuse);
-  color: var(--chartreuse);
-  cursor: pointer;
-  transition: all var(--transition);
-  background: transparent;
-  position: relative;
-  overflow: hidden;
-}
-
-.btn::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--chartreuse);
-  transform: translateX(-105%);
-  transition: transform 0.3s ease;
-  z-index: -1;
-}
-
-.btn:hover {
-  color: var(--navy);
-}
-
-.btn:hover::before {
-  transform: translateX(0);
-}
-
-.btn-filled {
-  background: var(--chartreuse);
-  color: var(--navy);
-}
-
-.btn-filled::before {
-  background: var(--white);
-}
-
-.btn-filled:hover {
-  color: var(--navy);
-}
-
-/* ---------- Image Placeholders ---------- */
-.img-placeholder {
-  background: rgba(204, 215, 42, 0.08);
-  border: 2px dashed rgba(204, 215, 42, 0.3);
+.hero-content {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: fit-content; /* Shrinks the container to match the exact width of your tagline/paragraph */
+  margin-top: 6rem; /* Adjust as needed */
+}
+
+.tagline {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(3.75rem, 10vw, 7.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: var(--text-offwhite);
+  margin-bottom: 1.5rem;
+  text-shadow: 
+    0 0 14px rgba(255, 255, 247, 0.25),
+    0 0 32px rgba(255, 255, 247, 0.12);
+}
+
+.tagline .period {
+  color: var(--accent-teal);
+  text-shadow: 
+    0 0 12px rgba(0, 229, 204, 0.8),
+    0 0 28px rgba(0, 229, 204, 0.5),
+    0 0 48px rgba(0, 229, 204, 0.25);
+}
+
+.hero-description {
+  max-width: 55ch; /* Caps paragraph line length (adjust to taste, e.g., 480px or 55ch) */
+  margin-top: 2.25rem; /* Adjust as needed */
+  font-family: var(--font-display, 'Montserrat', sans-serif);
+  font-weight: 400; /* Regular weight */
+  line-height: 1.6;
+}
+
+/* =========================================
+   5. BUTTONS & INTERACTIVE ELEMENTS
+   ========================================= */
+.cta-wrapper {
+  align-self: center; /* Now centers strictly within the width of .hero-content */
+  display: inline-block;
+  margin-top: 6rem; /* Creates clean space between the paragraph and the button */
+  filter: drop-shadow(0 0 16px rgba(0, 229, 204, 0.35));
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.cta-wrapper:hover {
+  transform: translateY(-2px);
+  filter: drop-shadow(0 0 24px rgba(0, 229, 204, 0.65));
+}
+
+.cta-wrapper:active {
+  transform: translateY(0);
+}
+
+.cta-button {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  gap: 0.5rem;
-  color: rgba(204, 215, 42, 0.5);
-  font-family: var(--font-display);
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  transition: border-color var(--transition);
+  align-self: center; /* Centers the button horizontally inside a flex-column parent */
+  
+  width: 175px;
+  height: 65px;
+  padding-top:6px;
+  padding-bottom: 12px;
+  
+  background-color: var(--accent-teal);
+  color: var(--bg-black);
+  
+  /* Explicitly set Montserrat here */
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900; /* Matches Montserrat Black from your Google Fonts link (or use 700 for Bold) */
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  
+  /* Embedded clean SVG mask */
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 90'%3E%3Cpath d='M15 10h170c8 0 15 7 15 15v35c0 8-7 15-15 15h-65l-12 12-8-12h-85c-8 0-15-7-15-15V25c0-8 7-15 15-15z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 90'%3E%3Cpath d='M15 10h170c8 0 15 7 15 15v35c0 8-7 15-15 15h-65l-12 12-8-12h-85c-8 0-15-7-15-15V25c0-8 7-15 15-15z'/%3E%3C/svg%3E");
+  
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  
+  transition: background-color 0.2s ease;
 }
 
-.img-placeholder:hover {
-  border-color: rgba(204, 215, 42, 0.6);
+.cta-button:hover {
+  background-color: var(--accent-teal-hover);
 }
 
-.img-placeholder svg {
-  opacity: 0.4;
+.cta-button:hover {
+  background-color: var(--accent-teal-hover);
 }
 
-/* ---------- Brand Pattern Background ---------- */
-.pattern-bg {
-  background-color: var(--navy);
-  background-image: 
-    radial-gradient(circle at 1px 1px, rgba(204,215,42,0.06) 1px, transparent 0);
-  background-size: 32px 32px;
-}
-
-/* ---------- Decorative Divider ---------- */
-.divider {
-  width: 60px;
-  height: 4px;
-  background: var(--chartreuse);
-  margin: 1.5rem 0;
-}
-
-.divider-center {
-  margin: 1.5rem auto;
-}
-
-/* ---------- Footer ---------- */
-.site-footer {
-  background: var(--black);
-  padding: 3rem 0;
-  border-top: 2px solid var(--chartreuse);
-}
-
-.footer-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-}
-
-.footer-copy {
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.5);
-  font-family: var(--font-display);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.footer-links {
-  display: flex;
-  gap: 1.5rem;
-  list-style: none;
-}
-
-.footer-links a {
-  font-family: var(--font-display);
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
-}
-
-.footer-links a:hover {
-  color: var(--chartreuse);
-}
-
-/* ---------- AOS Custom Overrides ---------- */
-[data-aos] {
+/* Responsive Serpent Graphic Scaled to Viewport */
+.transition-serpent-wrapper {
+  position: absolute;
+  bottom: -2px; /* Sits flush against the #fffff7 section seam (adjust if your SVG coils dip below) */
+  right: 12%;
+  z-index: 10;
   pointer-events: none;
 }
-[data-aos].aos-animate {
-  pointer-events: auto;
+
+.transition-serpent {
+  /* Scales fluidly between 220px on mobile, 28% of viewport width on desktop, up to 440px max */
+  width: clamp(220px, 28vw, 440px);
+  height: auto;
+  display: block;
 }
 
-/* ---------- Responsive ---------- */
-@media (max-width: 768px) {
+.fold-spacer {
+  height: 2rem;
+}
+
+/* =========================================
+   6. RESPONSIVE / MOBILE ADJUSTMENTS
+   ========================================= */
+@media (max-width: 600px) {
+  .navbar {
+    padding: 1.5rem 0;
+  }
+
   .nav-links {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: var(--navy);
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 3rem;
-    z-index: 999;
+    gap: 1.5rem;
   }
 
-  .nav-links.open {
-    display: flex;
+  .cta-button {
+    width: 100%;
+    text-align: center;
   }
+}
 
-  .nav-links a {
-    font-size: 1.5rem;
-    letter-spacing: 0.15em;
-  }
+/* Below the Fold Wrapper */
+.below-fold-wrapper {
+  background-color: var(--bg-off-white, #fffff7);
+  color: var(--bg-black, #000000);
+  padding-top: 7rem;
+  padding-bottom: 7rem; /* Meets the black footer cleanly with no gap */
+}
 
-  .nav-toggle {
-    display: flex;
-    z-index: 1000;
-  }
+.content-section {
+  padding: 3.5rem 2rem;
+}
 
-  .nav-toggle.open span:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
-  }
-  .nav-toggle.open span:nth-child(2) {
-    opacity: 0;
-  }
-  .nav-toggle.open span:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
-  }
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-  section {
-    padding: 4rem 0;
-  }
+/* Section Labels & Headings */
+.section-eyebrow {
+  display: inline-block;
+  font-family: var(--font-display, 'Montserrat', sans-serif);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--bg-black, #000000);
+  margin-bottom: 1rem;
+  border-bottom: 3px solid var(--accent-teal, #00e5cc);
+  padding-bottom: 0.25rem;
+}
 
-  .footer-inner {
+.section-heading {
+  font-family: var(--font-display, 'Montserrat', sans-serif);
+  font-weight: 800;
+  font-size: clamp(1.85rem, 3.5vw, 2.75rem);
+  line-height: 1.15;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  max-width: 780px;
+}
+
+/* About Paragraph */
+.about-copy {
+  font-family: var(--font-display, 'Montserrat', sans-serif);
+  font-weight: 400;
+  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+  line-height: 1.65;
+  max-width: 760px;
+  margin: 0;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+/* Subtle Divider Between About and Process */
+.process-section {
+  margin-top: 2rem;
+  padding-top: 4.5rem;
+}
+
+.process-split {
+  display: grid;
+  grid-template-columns: 1fr 1.65fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.process-header {
+  position: sticky;
+  top: 120px; /* Clears your fixed frosted-glass header */
+}
+
+.process-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.process-step {
+  padding-bottom: 3rem;
+}
+
+.process-step:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* Black Bar Behind Step Titles */
+.step-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 0.85rem;
+  width: 100%; /* Change to 'fit-content' if you want the bar to hug the text instead of spanning the column */
+  background-color: var(--bg-black, #000000);
+  color: var(--text-off-white, #fffff7);
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1.25rem;
+  box-sizing: border-box;
+}
+
+.step-number {
+  font-family: var(--font-display, 'Montserrat', sans-serif);
+  font-weight: 900;
+  font-size: 1.25rem;
+  color: var(--text-off-white, #fffff7);
+}
+
+.step-number::after {
+  content: ".";
+  color: var(--accent-teal, #00e5cc);
+}
+
+.step-title {
+  font-family: var(--font-display, 'Montserrat', sans-serif);
+  font-weight: 800;
+  font-size: 1.45rem;
+  color: var(--text-off-white, #fffff7);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.accent-dot {
+  color: var(--accent-teal, #00e5cc);
+}
+
+.step-description {
+  font-family: var(--font-display, 'Montserrat', sans-serif);
+  font-weight: 400;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  margin: 0;
+  color: rgba(0, 0, 0, 0.82);
+}
+
+@media (max-width: 850px) {
+  .process-split {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .process-header {
+    position: static;
+  }
+}
+
+/* Process Closing CTA - Fully Centered */
+.process-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1.75rem;
+  margin: 5rem auto 0 auto; /* Centers the container block horizontally */
+  padding-top: 3rem;
+  width: 100%;
+  max-width: 900px; /* Adjust this if you want the text to span wider or narrower */
+}
+
+.process-cta-text {
+  font-family: var(--font-display, 'Montserrat', sans-serif);
+  font-weight: 800;
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  line-height: 1.3;
+  color: var(--bg-black, #000000);
+  margin: 0;
+  width: 100%;
+  text-align: center;
+}
+
+/* Forces the speech-bubble button to center */
+.process-cta .cta-button {
+  align-self: center;
+}
+
+/* Footer Serpent Overlay */
+.site-footer {
+  position: relative;
+  background-color: var(--bg-black, #000000);
+  color: var(--text-off-white, #fffff7);
+  padding: 6rem 2rem 3rem 2rem;
+  overflow: visible; /* Allows the serpent to break out of the top of the footer */
+}
+
+/* Site Footer - Dark Bookend */
+.site-footer {
+  background-color: var(--bg-black, #000000);
+  color: var(--text-off-white, #fffff7);
+  width: 100%;
+  margin-top: 6rem;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  font-family: var(--font-display, 'Montserrat', sans-serif);
+  font-size: 0.9rem;
+}
+
+.footer-copyright {
+  margin: 0;
+  font-weight: 400;
+  color: rgba(255, 255, 247, 0.75);
+}
+
+.footer-contact {
+  color: var(--text-off-white, #fffff7);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-contact:hover {
+  color: var(--accent-teal, #00e5cc);
+}
+
+.footer-socials {
+  display: flex;
+  gap: 1.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-socials a {
+  color: var(--text-off-white, #fffff7);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-socials a:hover {
+  color: var(--accent-teal, #00e5cc);
+}
+
+@media (max-width: 768px) {
+  .footer-container {
     flex-direction: column;
     text-align: center;
   }
