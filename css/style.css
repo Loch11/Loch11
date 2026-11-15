@@ -395,19 +395,21 @@ body {
 
 /* Mobile Responsiveness for Editorial Process */
 @media (max-width: 768px) {
+  .process-section {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
   .process-item {
     grid-template-columns: 1fr;
     gap: 0.5rem;
   }
   
   .process-num {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 800;
-  font-size: clamp(2rem, 3vw, 2.75rem);
-  color: var(--bg-black, #000000);
-  line-height: 1;
-  letter-spacing: -0.02em;
-}
+    font-size: 1.75rem;
+    -webkit-text-stroke: 0;
+    color: var(--bg-black, #000000);
+  }
 }
 
 @media (max-width: 850px) {
