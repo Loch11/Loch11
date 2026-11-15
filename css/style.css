@@ -524,3 +524,16 @@ body {
     text-align: center;
   }
 }
+
+@media (max-width: 600px) {
+  .cta-wrapper {
+    width: 100%;
+    padding: 0 1rem; /* Keeps the button from touching the edges of the phone screen */
+  }
+
+  .cta-button {
+    padding: 0.9rem 2rem; /* Generous horizontal space around the text */
+    width: auto;          /* Prevents the button from stretching edge-to-edge */
+    min-width: 180px;     /* Guarantees a solid, balanced pill/bubble shape */
+  }
+}
