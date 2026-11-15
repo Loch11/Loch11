@@ -537,3 +537,15 @@ body {
     min-width: 180px;     /* Guarantees a solid, balanced pill/bubble shape */
   }
 }
+
+/* Subpage Layout & Sticky Footer Support */
+.subpage-main {
+  min-height: calc(100vh - 220px); /* Keeps footer pinned near the bottom on sparse pages */
+  padding-top: 8rem;               /* Clears the fixed/glass navigation bar */
+  padding-bottom: 4rem;
+}
+
+/* Active Page Indicator in Nav */
+.nav-links a[aria-current="page"] {
+  color: var(--accent-teal, #00e5cc);
+}
