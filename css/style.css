@@ -407,7 +407,6 @@ body {
   
   .process-num {
     font-size: 1.75rem;
-    -webkit-text-stroke: 0;
     color: var(--bg-black, #000000);
   }
 }
@@ -415,7 +414,7 @@ body {
 @media (max-width: 850px) {
   .process-split {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 1.5rem;
   }
   .process-header {
     position: static;
