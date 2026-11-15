@@ -332,84 +332,82 @@ body {
   color: rgba(0, 0, 0, 0.85);
 }
 
-/* Subtle Divider Between About and Process */
+/* Editorial Process Section */
 .process-section {
-  margin-top: 2rem;
-  padding-top: 4.5rem;
+  padding: 6rem 0;
+  background-color: var(--bg-off-white, #fffff7);
+  color: var(--bg-black, #000000);
 }
 
-.process-split {
-  display: grid;
-  grid-template-columns: 1fr 1.65fr;
-  gap: 4rem;
-  align-items: start;
+.process-section-header {
+  margin-bottom: 4rem;
+  max-width: 700px;
 }
 
-.process-header {
-  position: sticky;
-  top: 120px; /* Clears your fixed frosted-glass header */
-}
-
-.process-list {
+.editorial-process-list {
   display: flex;
   flex-direction: column;
   gap: 3.5rem;
+  max-width: 900px;
+  margin-bottom: 5rem;
+  padding-top: 3.5rem;
 }
 
-.process-step {
-  padding-bottom: 3rem;
-}
-
-.process-step:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-/* Black Bar Behind Step Titles */
-.step-meta {
-  display: flex;
+.process-item {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 2rem;
   align-items: baseline;
-  gap: 0.85rem;
-  width: 100%; /* Change to 'fit-content' if you want the bar to hug the text instead of spanning the column */
-  background-color: var(--bg-black, #000000);
-  color: var(--text-off-white, #fffff7);
-  padding: 0.75rem 1.25rem;
-  margin-bottom: 1.25rem;
-  box-sizing: border-box;
 }
 
-.step-number {
+.process-num {
   font-family: var(--font-display, 'Montserrat', sans-serif);
   font-weight: 900;
-  font-size: 1.25rem;
-  color: var(--text-off-white, #fffff7);
+  font-size: clamp(2rem, 3vw, 2.75rem);
+  color: var(--black, #000000); /* Ties in your bioluminescent teal accent */
+  line-height: 1;
+  letter-spacing: -0.02em;  
 }
 
-.step-number::after {
-  content: ".";
-  color: var(--accent-teal, #00e5cc);
+.process-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
-.step-title {
+.process-title {
   font-family: var(--font-display, 'Montserrat', sans-serif);
   font-weight: 800;
-  font-size: 1.45rem;
-  color: var(--text-off-white, #fffff7);
-  margin: 0;
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
   letter-spacing: -0.01em;
-}
-
-.accent-dot {
-  color: var(--accent-teal, #00e5cc);
-}
-
-.step-description {
-  font-family: var(--font-display, 'Montserrat', sans-serif);
-  font-weight: 400;
-  font-size: 1.05rem;
-  line-height: 1.65;
+  color: var(--bg-black, #000000);
   margin: 0;
-  color: rgba(0, 0, 0, 0.82);
+}
+
+.process-desc {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.75);
+  margin: 0;
+  max-width: 700px;
+}
+
+/* Mobile Responsiveness for Editorial Process */
+@media (max-width: 768px) {
+  .process-item {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  
+  .process-num {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 3vw, 2.75rem);
+  color: var(--bg-black, #000000);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
 }
 
 @media (max-width: 850px) {
