@@ -246,7 +246,7 @@ body {
 .transition-serpent-wrapper {
   position: absolute;
   bottom: -2px; /* Sits flush against the #fffff7 section seam (adjust if your SVG coils dip below) */
-  right: 12%;
+  right: 0%;
   z-index: 10;
   pointer-events: none;
 }
