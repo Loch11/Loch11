@@ -408,7 +408,7 @@ body {
     padding-top: 2rem;
     gap: 2.25rem;
     /* Pulls the closing CTA closer to Step 03 */
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
   }
 
   .process-item {
