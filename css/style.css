@@ -566,3 +566,34 @@ body {
 .nav-links a[aria-current="page"] {
   color: var(--accent-teal, #00e5cc);
 }
+
+.svg-filters {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* Container that manages the water-submerged initial state */
+.logo-surface-wrap {
+  display: inline-block;
+  opacity: 1; /* Fallback: visible by default so it never vanishes */
+  transform: translateY(0);
+  filter: none;
+  will-change: transform, opacity, filter;
+}
+
+/* Only apply the submerged/hidden state when JS is active and ready */
+.js-enabled .logo-surface-wrap {
+  opacity: 0;
+  transform: translateY(35px) scale(0.96);
+  filter: url(#water-ripple);
+  transition: 
+    opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.js-enabled .logo-surface-wrap.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
