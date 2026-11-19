@@ -461,7 +461,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: fit-content;
+  width: 140px;
   margin: 0 auto;
   overflow: hidden;
   padding: 8px 12px;
@@ -537,7 +537,7 @@ body {
   --teal: #00e5cc;
   --panel-bg: rgba(255, 255, 255, 0.03);
   --line-subtle: rgba(255, 255, 255, 0.14);
-  padding-top: 8.5rem;
+  padding-top: 11rem;
   padding-bottom: 5rem;
 }
 
