@@ -1,16 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Flag that JS is running, so we can safely hide the logo before animating it up
-  document.documentElement.classList.add("js-enabled");
-
   const logoWrap = document.getElementById("footerLogo");
   const displacement = document.getElementById("water-displacement");
   const turbulence = document.getElementById("water-turbulence");
 
-  if (!logoWrap || !displacement || !turbulence) return;
+  if (!logoWrap) return;
 
   let hasAnimated = false;
 
   const animateWaterSettle = () => {
+    if (!displacement || !turbulence) {
+      if (logoWrap) logoWrap.classList.add("is-visible");
+      return;
+    }
+
     const duration = 1800;
     const startTime = performance.now();
     const startScale = 38;
@@ -37,21 +39,31 @@ document.addEventListener("DOMContentLoaded", () => {
     requestAnimationFrame(updateRipple);
   };
 
+  const triggerReveal = () => {
+    if (hasAnimated) return;
+    hasAnimated = true;
+    logoWrap.classList.add("is-visible");
+    animateWaterSettle();
+  };
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting && !hasAnimated) {
-          hasAnimated = true;
-          logoWrap.classList.add("is-visible");
-          animateWaterSettle();
+        if (entry.isIntersecting) {
+          triggerReveal();
           observer.unobserve(logoWrap);
         }
       });
     },
-    {
-      threshold: 0.1 // Triggers even if just 10% of the footer is visible
-    }
+    { threshold: 0.1 }
   );
 
   observer.observe(logoWrap);
+
+  // FAIL-SAFE: If the observer doesn't trigger within 800ms, force it visible anyway
+  setTimeout(() => {
+    if (!hasAnimated) {
+      triggerReveal();
+    }
+  }, 800);
 });
