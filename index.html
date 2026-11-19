@@ -4,231 +4,182 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Loch11 | Be Known.</title>
-
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:ital,wght@0,400;0,600;0,700;0,900;1,400&display=swap" rel="stylesheet">
+  
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-
-  <!-- Open Graph / Social Link Preview -->
+  <link rel="icon" href="images/favicon-dark.svg" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="images/favicon-light.svg" media="(prefers-color-scheme: dark)">
+  
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://loch11.com/">
   <meta property="og:title" content="Loch11 | Be Known.">
   <meta property="og:description" content="Independent creative studio specializing in custom logos, brand identity systems, character design, and commercial illustration.">
   <meta property="og:image" content="https://loch11.com/images/og-preview.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-
-  <!-- Twitter / X Large Card Support -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Loch11 | Be Known.">
-  <meta name="twitter:description" content="Independent creative studio specializing in custom logos, brand identity systems, character design, and commercial illustration.">
-  <meta name="twitter:image" content="https://loch11.com/images/og-preview.png">
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
-
+  
   <!-- External Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- Hidden Liquid Glass Ripple Filter -->
-  <svg width="0" height="0" style="position: absolute; pointer-events: none;" aria-hidden="true">
-    <defs>
-      <filter id="water-ripple" x="-10%" y="-10%" width="120%" height="120%">
-        <feTurbulence type="fractalNoise" baseFrequency="0.012 0.045" numOctaves="2" seed="3" result="noise">
-          <animate attributeName="baseFrequency" dur="14s" values="0.012 0.045; 0.018 0.06; 0.012 0.045" repeatCount="indefinite" />
-        </feTurbulence>
-        <feDisplacementMap in="SourceGraphic" in2="noise" scale="14" xChannelSelector="R" yChannelSelector="G" />
-      </filter>
+<!-- Hidden Navbar Glass Ripple Filter -->
+<svg width="0" height="0" style="position: absolute; pointer-events: none;" aria-hidden="true">
+  <defs>
+    <filter id="water-ripple" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence 
+        type="fractalNoise" 
+        baseFrequency="0.012 0.045" 
+        numOctaves="2" 
+        seed="3" 
+        result="noise">
+        <animate 
+          attributeName="baseFrequency" 
+          dur="14s" 
+          values="0.012 0.045; 0.018 0.06; 0.012 0.045" 
+          repeatCount="indefinite" />
+      </feTurbulence>
+      <feDisplacementMap 
+        in="SourceGraphic" 
+        in2="noise" 
+        scale="14" 
+        xChannelSelector="R" 
+        yChannelSelector="G" />
+    </filter>
+  </defs>
+</svg>
 
-      <filter id="footer-emerge-ripple" x="-20%" y="-20%" width="140%" height="140%">
-        <feTurbulence
-          type="fractalNoise"
-          baseFrequency="0.015 0.06"
-          numOctaves="2"
-          seed="7"
-          result="rippleNoise"
-        />
-        <feDisplacementMap
-          id="footer-displacement"
-          in="SourceGraphic"
-          in2="rippleNoise"
-          scale="16"
-          xChannelSelector="R"
-          yChannelSelector="G"
-        />
-      </filter>
-    </defs>
-  </svg>
+<!-- ABOVE THE FOLD -->
+<div class="above-the-fold">
+  
+  <!-- Navigation -->
+  <header class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="brand-link" aria-label="Loch11 Home">
+        <img src="images/l11-bubble.svg" alt="Loch11 Logo" class="brand-icon">
+      </a>
 
-  <!-- Above the Fold -->
-  <div class="above-the-fold">
-    <!-- Navigation -->
-    <header class="nav">
-      <div class="nav-container">
-        <a href="index.html" class="brand-link" aria-label="Loch11 Home">
-          <img src="images/l11-bubble.svg" alt="Loch11 Logo" class="brand-icon">
-        </a>
-
-        <nav aria-label="Primary Navigation">
-          <ul class="nav-links">
-            <li><a href="work.html">Work</a></li>
-            <li><a href="about.html">About</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-
-    <!-- Hero -->
-    <section class="hero" aria-labelledby="hero-heading">
-      <div class="hero-content">
-        <h1 id="hero-heading" class="tagline">Be Known<span class="period">.</span></h1>
-        <p class="hero-description">
-          Independent creative studio crafting distinct brand identity systems, custom logos, character &amp; mascot design, and vector illustration.
-        </p>
-      </div>
-
-      <div class="cta-wrapper">
-        <a href="work.html" class="cta-button">See Work</a>
-      </div>
-    </section>
-
-    <div class="transition-serpent-wrapper" aria-hidden="true">
-      <img src="images/serpent.svg" alt="" class="transition-serpent">
+      <nav>
+        <ul class="nav-links">
+          <li><a href="work.html">Work</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
     </div>
-  </div>
+  </header>
 
-  <!-- Below the Fold -->
-  <main class="below-fold-wrapper">
-    <section class="content-section" aria-labelledby="about-heading">
-      <div class="section-container">
-        <span class="section-eyebrow">Identity &amp; Illustration</span>
-        <h2 id="about-heading" class="section-heading">Built to stand out from the noise</h2>
-        <p class="about-copy">
-          Every mark, wordmark, and illustration is constructed from scratch with clear hierarchy, lasting geometry, and practical versatility across print, packaging, and digital touchpoints.
-        </p>
+  <!-- Main Hero Content -->
+  <main class="hero">
+    <div class="hero-content">
+      <h1 class="tagline">Be Known<span class="period">.</span></h1>
+      
+      <p class="hero-description">
+        A common problem in brand identity is <em>"sameness."</em> Businesses within an industry often look and feel the same, which makes it difficult for them to stand out. If you are looking to break the mold and emerge from the crowd, click the button below and let's talk about how to set your brand apart from the rest.
+      </p>
+      
+      <div class="cta-wrapper">
+        <a href="mailto:hello@loch11.com" class="cta-button">Let's Talk</a>
       </div>
-    </section>
-
-    <section class="process-section" aria-labelledby="process-heading">
-      <div class="section-container">
-        <div class="process-section-header">
-          <span class="section-eyebrow">How We Work</span>
-          <h2 id="process-heading" class="section-heading">A focused three-step process</h2>
-        </div>
-
-        <div class="editorial-process-list">
-          <article class="process-item">
-            <span class="process-num">01</span>
-            <div class="process-content">
-              <h3 class="process-title">Discovery &amp; Direction</h3>
-              <p class="process-desc">
-                We define what makes your brand unmistakable—audience, positioning, visual references, and the core traits the identity needs to carry.
-              </p>
-            </div>
-          </article>
-
-          <article class="process-item">
-            <span class="process-num">02</span>
-            <div class="process-content">
-              <h3 class="process-title">Sketching &amp; Vector Craft</h3>
-              <p class="process-desc">
-                Ideas start on paper and move into clean vector geometry, custom lettering, and cohesive color/type systems tested at every scale.
-              </p>
-            </div>
-          </article>
-
-          <article class="process-item">
-            <span class="process-num">03</span>
-            <div class="process-content">
-              <h3 class="process-title">System &amp; Handoff</h3>
-              <p class="process-desc">
-                You receive organized production files, clear usage guidance, and flexible assets ready for packaging, merchandise, web, and campaigns.
-              </p>
-            </div>
-          </article>
-        </div>
-
-        <div class="process-cta">
-          <p class="process-cta-text">Ready to build an identity your audience remembers?</p>
-          <a href="mailto:loch11creative@gmail.com" class="cta-button">Let's Talk</a>
-        </div>
-      </div>
-    </section>
+    </div>
   </main>
 
-  <!-- Full-Width Black Footer -->
-  <footer class="site-footer">
-    <div class="footer-container">
-      <div class="footer-left">
-        <p class="footer-copyright">&copy; 2026 Loch11. All rights reserved.</p>
-      </div>
+  <div class="fold-spacer"></div>
+  
+  <!-- Overlapping Transition Serpent Graphic -->
+  <div class="transition-serpent-wrapper">
+    <img src="images/serpentfold.svg" alt="" class="transition-serpent" aria-hidden="true">
+  </div>
+</div>
 
-      <div class="footer-center">
-        <a href="index.html" class="footer-logo-link footer-water-stage" aria-label="Loch11 Home">
-          <img src="images/loch11-logo.svg" alt="Loch11 Logo" class="footer-logo">
-          <span class="waterline-shimmer" aria-hidden="true"></span>
-        </a>
-        <a href="mailto:loch11creative@gmail.com" class="footer-contact">loch11creative@gmail.com</a>
-      </div>
+<!-- BELOW THE FOLD -->
+<main class="below-fold-wrapper">
 
-      <div class="footer-right">
-        <ul class="footer-socials">
-          <li><a href="https://www.instagram.com/loch11.studio" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-          <li><a href="https://www.linkedin.com/company/loch11/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-          <li><a href="https://www.facebook.com/Loch11creative" target="_blank" rel="noopener noreferrer">Facebook</a></li>
-        </ul>
-      </div>
+  <!-- About Loch11 Section -->
+  <section id="about" class="content-section about-section">
+    <div class="section-container">
+      <h2 class="section-heading">Built to make your brand impossible to ignore.</h2>
+      <p class="about-copy">
+        Loch11 is an independent creative studio specializing in custom identity systems, mascots, and bold visual storytelling. We partner with ambitious founders and teams to cut through generic noise with distinctive design that sticks—helping you stand out and be known.
+      </p>
     </div>
-  </footer>
+  </section>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const waterStage = document.querySelector('.footer-water-stage');
-      const displacement = document.getElementById('footer-displacement');
-      if (!waterStage) return;
+  <!-- Process Section -->
+  <section id="process" class="content-section process-section">
+    <div class="section-container">
+      
+      <!-- Section Header -->
+      <div class="process-section-header">
+        <h2 class="section-heading">How we work</h2>
+      </div>
 
-      const triggerEmerge = () => {
-        waterStage.classList.add('is-emerged');
+      <!-- Editorial Staggered Process List -->
+      <div class="editorial-process-list">
+        
+        <div class="process-item">
+          <span class="process-num">1</span>
+          <div class="process-content">
+            <h3 class="process-title">Discover</h3>
+            <p class="process-desc">Place Holder</p>
+          </div>
+        </div>
 
-        if (displacement) {
-          let scale = 16;
-          const calmInterval = setInterval(() => {
-            scale -= 0.8;
-            if (scale <= 0) {
-              displacement.setAttribute('scale', '0');
-              waterStage.classList.add('is-settled');
-              clearInterval(calmInterval);
-            } else {
-              displacement.setAttribute('scale', scale.toFixed(1));
-            }
-          }, 55);
-        } else {
-          setTimeout(() => waterStage.classList.add('is-settled'), 1650);
-        }
-      };
+        <div class="process-item">
+          <span class="process-num">2</span>
+          <div class="process-content">
+            <h3 class="process-title">Craft</h3>
+            <p class="process-desc">Place Holder</p>
+          </div>
+        </div>
 
-      if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              triggerEmerge();
-              observer.unobserve(waterStage);
-            }
-          });
-        }, {
-          threshold: 0,
-          rootMargin: '0px 0px -15px 0px'
-        });
+        <div class="process-item">
+          <span class="process-num">3</span>
+          <div class="process-content">
+            <h3 class="process-title">Launch</h3>
+            <p class="process-desc">Place Holder</p>
+          </div>
+        </div>
 
-        observer.observe(waterStage);
-      } else {
-        triggerEmerge();
-      }
-    });
-  </script>
+      </div>
 
+      <!-- Centered Closing CTA -->
+      <div class="process-cta">
+        <p class="process-cta-text">If you want to stand out and make a lasting impression</p>
+        <a href="mailto:hello@loch11.com" class="cta-button">Let's Talk</a>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- Full-Width Black Footer -->
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-left">
+      <p class="footer-copyright">&copy; 2026 Loch11. All rights reserved.</p>
+    </div>
+
+    <div class="footer-center">
+      <a href="index.html" class="footer-logo-link" aria-label="Loch11 Home">
+        <img src="images/loch11-logo.svg" alt="Loch11 Logo" class="footer-logo" style="width: 140px; height: auto; display: block;">
+      </a>
+      <a href="mailto:loch11creative@gmail.com" class="footer-contact">loch11creative@gmail.com</a>
+    </div>
+
+    <div class="footer-right">
+      <ul class="footer-socials">
+        <li><a href="https://www.instagram.com/loch11.studio" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        <li><a href="https://www.linkedin.com/company/loch11/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="https://www.facebook.com/Loch11creative" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
 </body>
 </html>
