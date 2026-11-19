@@ -117,3 +117,60 @@
             <div class="process-content">
               <h3 class="process-title">Sketching &amp; Vector Craft</h3>
               <p class="process-desc">
+
+                 <!-- Full-Width Black Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <p class="footer-copyright">&copy; 2026 Loch11. All rights reserved.</p>
+      </div>
+
+      <div class="footer-center">
+        <a href="index.html" class="footer-logo-link footer-water-stage" aria-label="Loch11 Home">
+          <img src="images/loch11-logo.svg" alt="Loch11 Logo" class="footer-logo">
+          <span class="waterline-shimmer" aria-hidden="true"></span>
+        </a>
+        <a href="mailto:loch11creative@gmail.com" class="footer-contact">loch11creative@gmail.com</a>
+      </div>
+
+      <div class="footer-right">
+        <ul class="footer-socials">
+          <li><a href="https://www.instagram.com/loch11.studio" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="https://www.linkedin.com/company/loch11/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          <li><a href="https://www.facebook.com/Loch11creative" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const waterStage = document.querySelector('.footer-water-stage');
+      if (!waterStage) return;
+
+      const triggerEmerge = () => {
+        waterStage.classList.add('is-emerged');
+      };
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              triggerEmerge();
+              observer.unobserve(waterStage);
+            }
+          });
+        }, {
+          threshold: 0,
+          rootMargin: '0px 0px -20px 0px'
+        });
+
+        observer.observe(waterStage);
+      } else {
+        triggerEmerge();
+      }
+    });
+  </script>
+
+</body>
+</html>
