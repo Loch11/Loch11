@@ -217,7 +217,8 @@
         }
       });
     }, {
-      threshold: 0.35 // Triggers when 35% of the logo stage enters the viewport
+      threshold: 0, // Triggers when 35% of the logo stage enters the viewport
+   rootmargin: '0px 0px -20px 0px'
     });
 
     observer.observe(waterStage);
