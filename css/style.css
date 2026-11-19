@@ -576,13 +576,31 @@ body {
   pointer-events: none;
 }
 
-/* Container that manages the water-submerged initial state */
+/* Container that handles the buoyant reveal */
 .logo-surface-wrap {
   display: inline-block;
-  opacity: 1; /* Fallback: visible by default so it never vanishes */
-  transform: translateY(0);
-  filter: none;
+  opacity: 1; /* Visible by default so it never vanishes */
+  transform: translateY(35px) scale(0.96);
+  filter: url(#water-ripple);
+  transition: 
+    opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.6s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform, opacity, filter;
+}
+
+/* Triggered when scrolled into view */
+.logo-surface-wrap.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.svg-filters {
+  position: fixed;
+  top: -9999px;
+  left: -9999px;
+  width: 100px;
+  height: 100px;
+  pointer-events: none;
 }
 
 /* Only apply the submerged/hidden state when JS is active and ready */
