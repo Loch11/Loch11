@@ -238,6 +238,10 @@ body {
   display: block;
 }
 
+.fold-spacer {
+  height: 2rem;
+}
+
 /* =========================================
 6. BELOW THE FOLD & SECTIONS
    ========================================= */
@@ -412,6 +416,7 @@ body {
   justify-content: center;
   text-align: center;
   gap: 0.75rem;
+  margin: 0 auto;
 }
 
 .footer-contact {
@@ -444,29 +449,28 @@ body {
   color: var(--accent-teal);
 }
 
-.subpage-main,
-.work-main {
+.subpage-main {
   min-height: calc(100vh - 220px);
-  padding-top: 11rem;
-  padding-bottom: 5rem;
+  padding-top: 8rem;
+  padding-bottom: 4rem;
 }
 
 /* Footer Water Emergence Effect */
 .footer-water-stage {
   position: relative;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 16px 8px;
+  width: fit-content;
+  margin: 0 auto;
   overflow: hidden;
+  padding: 8px 12px;
 }
 
 .footer-water-stage .footer-logo {
   display: block;
-  width: 140px;
-  height: auto;
   margin: 0 auto;
-  transform: translateY(115%) scale(0.96) skewX(-4deg);
+  transform: translateY(115%) scaleY(0.85) skewX(-4deg);
   opacity: 0;
   filter: blur(3px);
   transition:
@@ -494,15 +498,10 @@ body {
   opacity: 1;
   filter: blur(0);
   animation: water-bob 1.6s ease-out 0.3s 1;
-  animation: water-emerge 1.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .footer-water-stage.is-emerged .waterline-shimmer {
-  animation: surface-ripple 2s ease-out forwards;
-}
-
-.footer-water-stage.is-emerged.is-settled .footer-logo {
-  filter: none;
+  animation: surface-ripple 1.8s ease-out forwards;
 }
 
 @keyframes water-bob {
@@ -512,27 +511,9 @@ body {
   100% { transform: translateY(0) skewX(0deg) scaleY(1); }
 }
 
-@keyframes water-emerge {
-  0% {
-    transform: translateY(115%) scale(0.96);
-    opacity: 0;
-  }
-  25% {
-    opacity: 0.65;
-  }
-  75% {
-    transform: translateY(-3px) scale(1.01);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
-}
-
 @keyframes surface-ripple {
   0%   { opacity: 0; transform: scaleX(0.2); }
-  30%  { opacity: 1; transform: scaleX(1.08); }
+  30%  { opacity: 1; transform: scaleX(1.05); }
   100% { opacity: 0; transform: scaleX(1.35); }
 }
 
@@ -556,10 +537,12 @@ body {
   --teal: #00e5cc;
   --panel-bg: rgba(255, 255, 255, 0.03);
   --line-subtle: rgba(255, 255, 255, 0.14);
+  padding-top: 8.5rem;
+  padding-bottom: 5rem;
 }
 
 .work-hero {
-  padding: 2.5rem 0;
+  padding: 3.5rem 0 2.5rem;
 }
 
 .work-hero .eyebrow {
@@ -801,6 +784,16 @@ body {
 
   .samples-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 850px) {
+  .process-split {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .process-header {
+    position: static;
   }
 }
 
